@@ -1,7 +1,8 @@
-#include <iostream>
-using namespace std;
+#include "test/ytcf/ytcf-tasks.h"
 
 int main() {
-  cout << "Hello world" << endl;
+
+  test::ytcf::ytcf_tasks_test();
+
   return 0;
 }
