@@ -1,10 +1,8 @@
-#include <iostream>
-using namespace std;
+#include "test/ytcf/ytcf-tasks.h"
 
 int main() {
-  int a = 0, b = 0;
-  cin >> a >> b;
-  int sum = a + b;
-  cout << sum << endl;
+
+  test::ytcf::ytcf_tasks_test();
+
   return 0;
 }
