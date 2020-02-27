@@ -2,13 +2,7 @@
 all: run
 
 run:
-	cd build; make
-
-watch:
-	while true; do \
-		make $(WATCHMAKE); \
-        inotifywait -qre close_write .; \
-    done
+	cd build; make; ./cpwite
 
 clean:
 	cd build; make clean
