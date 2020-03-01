@@ -32,9 +32,9 @@
 #define CRIT     0x01
 
 /* current log level */
-#define LOG_LEVEL DBG 
+#define LOG_LEVEL DBG
 
-#define WHERESTR "%s:%d: " 
+#define WHERESTR "%s:%d: "
 #define WHEREARG __FILE__,__LINE__
 #define PRINT_DEBUG_STR(...)  printf(__VA_ARGS__)
 #define LOG(X, _fmt, ...) if((LOG_LEVEL & X) == X) {\
@@ -46,5 +46,5 @@
                                     PRINT_DEBUG_STR(WHERESTR _fmt "\n", WHEREARG, ##__VA_ARGS__);\
 								}}
 
-	
+
 #endif
