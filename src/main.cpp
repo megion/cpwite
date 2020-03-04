@@ -1,8 +1,9 @@
 #include "test/ytcf/ytcf-tasks.h"
 
-int main() {
+int main()
+{
 
-  test::ytcf::ytcf_tasks_test();
+    test::ytcf::ytcf_tasks_test();
 
-  return 0;
+    return 0;
 }

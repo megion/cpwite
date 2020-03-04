@@ -57,15 +57,14 @@ size_t find_nearest_points(std::vector<unsigned int>& points, size_t rMax,
     LOG(WARN, "maxNeighbourIndex %lu", maxNeighbourIndex);
 
     if (maxFarPoints.size() != 0) {
-        //groupCount++;
-        groupCount +=
-            find_nearest_points(maxFarPoints, rMax, groupCount);
+        // groupCount++;
+        groupCount += find_nearest_points(maxFarPoints, rMax, groupCount);
         return 1;
     }
     return 0;
 
     // LOG(WARN, "groupCount %lu", groupCount);
-    //return groupCount;
+    // return groupCount;
     // if(maxNearestNeighbourCount == 0) {
     // return points.size();
     //}
@@ -127,7 +126,7 @@ void test_group_min_points()
     std::vector<unsigned int> points = {6, 2, 4, 3, 5, 1};
     size_t minCount = group_min_points(points, 1);
     LOG(WARN, "minCount %lu", minCount);
-    //assert(minCount == 2);
+    // assert(minCount == 2);
 }
 
 void ytcf_tasks_test()
