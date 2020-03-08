@@ -10,9 +10,9 @@
 namespace test {
 namespace week1 {
 
-void ytcf_tasks_test();
+void week1_tasks();
 
-}
+} // namespace week1
 } // namespace test
 
 #endif
