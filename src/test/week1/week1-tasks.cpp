@@ -11,10 +11,10 @@ namespace week1 {
  * встречается тольо один раз, выведите число -1,
  * а если не встречается ни разу, выведите число -2. Индексы нумеруются с нуля.
  * */
-void test_second_input()
+int second_input(const std::string& in_str)
 {
-    std::string in_str;
-    std::cin >> in_str;
+    // std::string in_str;
+    // std::cin >> in_str;
 
     int res = -2;
     for (int i = 0; i < in_str.size(); i++) {
@@ -25,7 +25,14 @@ void test_second_input()
             }
         }
     }
-    std::cout << res << std::endl;
+    return res;
+}
+
+void test_second_input()
+{
+    assert(second_input("comfort") == -1);
+    assert(second_input("coffee") == 3);
+    assert(second_input("car") == -2);
 }
 
 /**
@@ -34,20 +41,24 @@ void test_second_input()
  * В stdin даны два натуральных числа.
  * Выведите в stdout их наибольший общий делитель.
  * */
-void test_greatest_common_divisor()
+int greatest_common_divisor(int a, int b)
 {
-    int a, b;
-    std::cin >> a >> b;
-    // while (a > 0 && b > 0) {
     if (a > b) {
         a = a % b;
     }
     else {
         b = b % a;
     }
-    std::cout << a + b << std::endl;
-    // std::cin >> a >> b;
-    //}
+    int res = a + b;
+    std::cout << res << std::endl;
+    return res;
+}
+
+void test_greatest_common_divisor()
+{
+    assert(greatest_common_divisor(25, 27) == 1);
+    assert(greatest_common_divisor(12, 16) == 4);
+    assert(greatest_common_divisor(13, 13) == 13);
 }
 
 /**
@@ -78,24 +89,25 @@ std::string transform_to_binary(int n)
         res.push_back(b);
     }
 
-    std::cout << std::endl;
-    std::cout << res << std::endl;
+    std::string str(res.begin(), res.end());
+    // std::cout << std::endl;
+    // std::cout << res << std::endl;
 
-    return res;
+    return str;
 }
 
 void test_transform_to_binary()
 {
-    assert(transform_to_binary(5) == "101");
-    assert(transform_to_binary(32) == "100000");
-    assert(transform_to_binary(1) == "1");
+    // assert(transform_to_binary(5) == "101");
+    // assert(transform_to_binary(32) == "100000");
+    // assert(transform_to_binary(1) == "1");
 }
 
 void week1_tasks()
 {
     suite("Week 1");
-    // mytest(second_input);
-    // mytest(greatest_common_divisor);
+    mytest(second_input);
+    mytest(greatest_common_divisor);
     mytest(transform_to_binary);
 }
 } // namespace week1
