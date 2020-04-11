@@ -40,18 +40,26 @@ void test_second_input()
  *
  * В stdin даны два натуральных числа.
  * Выведите в stdout их наибольший общий делитель.
- * */
+ *
+ * воспользуйтесь алгоритмом Евклида:
+ * Пока A > 0 и B > 0:
+ * Если A > B:
+ * A = A % B
+ * иначе:
+ * B = B % A
+ * Вывести A + B
+ */
 int greatest_common_divisor(int a, int b)
 {
-    if (a > b) {
-        a = a % b;
+    while (a > 0 && b > 0) {
+        if (a > b) {
+            a = a % b;
+        }
+        else {
+            b = b % a;
+        }
     }
-    else {
-        b = b % a;
-    }
-    int res = a + b;
-    std::cout << res << std::endl;
-    return res;
+    return a + b;
 }
 
 void test_greatest_common_divisor()
@@ -66,41 +74,55 @@ void test_greatest_common_divisor()
  *
  * На вход дано целое положительное число N.
  * Выведите его в двоичной системе счисления без ведущих нулей.
+ *
+ * Правило перевода целой части числа состоит из следующих этапов:
+ * - число  N  делится на новое основание  р ;
+ * - полученный остаток запоминается или записывается
+ *   (это будет цифра младшего разряда);
+ * - целая часть полученного частного снова делится на  р ;
+ * - опять запоминаем полученный остаток (это будет цифра следующего разряда)
+ * и т. д.
+ * Такое последовательное деление продолжается до тех пор,
+ * пока целая часть частного не окажется меньше, чем основание системы счисления
+ * р . Эта последняя целая часть частного будет цифрой старшего разряда.
+ * Результат формируется путем последовательной записи слева направо цифры
+ * старшего разряда и всех записанных остатков в порядке, обратном их получению.
  * */
 std::string transform_to_binary(int n)
 {
+
+    // std::cout << "int_part: " << n << " " << std::endl;
     int p = 2; // основание системы счисления
 
-    /**
-     * while !(a<p)
-     * a = n/p // int part
-     * b = n - p * a // remainder
-     * next -> n = a
-     */
     std::vector<int> res;
-    int a = p, b;
-    // std::cout << a << " ";
-    while (a > 0) {
-        a = n / p;
-        // std::cout << a << " ";
-        b = n - p * a; // here b = 0 or 1
-        n = a;
-        std::cout << b << " ";
-        res.push_back(b);
+    int ost;          // полученный остаток
+    int int_part = n; // целая часть полученного частного
+    do {
+        int_part = n / p;
+        ost = n - int_part * p;
+        res.push_back(ost);
+        n = int_part;
+    } while (int_part >= p);
+
+    res.push_back(int_part);
+
+    bool existOne = false;
+    std::stringstream ss;
+    for (auto it = res.rbegin(); it != res.rend(); ++it) {
+        existOne = existOne || *it == 1;
+        if (existOne) {
+            ss << *it;
+        }
     }
-
-    std::string str(res.begin(), res.end());
-    // std::cout << std::endl;
-    // std::cout << res << std::endl;
-
-    return str;
+    //std::cout << ss.str() << std::endl;
+    return ss.str();
 }
 
 void test_transform_to_binary()
 {
-    // assert(transform_to_binary(5) == "101");
-    // assert(transform_to_binary(32) == "100000");
-    // assert(transform_to_binary(1) == "1");
+    assert(transform_to_binary(5) == "101");
+    assert(transform_to_binary(32) == "100000");
+    assert(transform_to_binary(1) == "1");
 }
 
 void week1_tasks()
