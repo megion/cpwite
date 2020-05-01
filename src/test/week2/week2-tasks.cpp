@@ -1,3 +1,11 @@
+#include <cstdlib>
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "week2-tasks.h"
 
 namespace test {
@@ -233,9 +241,7 @@ std::vector<int> PeopleQueue(const std::vector<int>& tv)
     return result;
 }
 
-void test_PeopleQueue()
-{
-}
+void test_PeopleQueue() {}
 
 /**
  * У каждого из нас есть повторяющиеся ежемесячные дела,
@@ -289,14 +295,42 @@ void test_PeopleQueue()
  * разделяя их пробелом. Порядок вывода дел в рамках каждой операции
  * значения не имеет.
  */
-std::vector<int> PeopleQueue(const std::vector<int>& tv)
+std::vector<int> WeekDays(const std::vector<int>& tv)
 {
     std::vector<int> result;
     return result;
 }
 
-void test_PeopleQueue()
+void test_WeekDays() {}
+
+/**
+ * Слова называются анаграммами друг друга, если одно из них можно получить
+ * перестановкой букв в другом. Например, слово «eat» можно получить
+ * перестановкой букв слова «tea», поэтому эти слова являются
+ * анаграммами друг друга. Даны пары слов, проверьте для каждой из них,
+ * являются ли слова этой пары анаграммами друг друга.
+ */
+std::map<char, int> BuildCharCounters(const std::string st)
 {
+    std::map<char, int> m;
+    for (auto s : st) {
+        m[s]++;
+    }
+    return m;
+}
+
+bool Anagrams(const std::pair<std::string, std::string>& pair)
+{
+    std::map<char, int> m1 = BuildCharCounters(pair.first);
+    std::map<char, int> m2 = BuildCharCounters(pair.second);
+    return m1 == m2;
+}
+
+void test_Anagrams()
+{
+    assert(Anagrams(std::make_pair("eat", "tea")) == true);
+    assert(Anagrams(std::make_pair("find", "tea")) == false);
+    assert(Anagrams(std::make_pair("master", "stream")) == true);
 }
 
 void week2_tasks()
@@ -310,6 +344,8 @@ void week2_tasks()
     mytest(Reverse);
     mytest(TemperatureAverage);
     mytest(PeopleQueue);
+    mytest(WeekDays);
+    mytest(Anagrams);
 }
 } // namespace week2
 } // namespace test
