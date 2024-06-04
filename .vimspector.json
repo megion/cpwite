@@ -1,0 +1,14 @@
+{
+    "configurations": {
+        "Launch": {
+            "adapter": "vscode-cpptools",
+            "filetypes": ["cpp", "c"],
+            "configuration": {
+                "request": "launch",
+                "program": "${workspaceRoot}/build/cpwite",
+                "cwd": "${workspaceRoot}",
+                "MIMode": "gdb"
+            }
+        }
+    }
+}

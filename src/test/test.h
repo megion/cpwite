@@ -11,7 +11,7 @@
  */
 #define mytest(fn) \
   printf("    " GREEN_COLOR "✓ %s" RESET_COLOR "\n", #fn); \
-  test_##fn();
+  fn();
 
 /*
  * Test suite title.

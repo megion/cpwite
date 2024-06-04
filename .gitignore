@@ -44,5 +44,6 @@
 .ccls-cache
 .clangd
 build
+.cache
 
 compile_commands.json

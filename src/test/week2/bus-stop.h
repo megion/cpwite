@@ -1,11 +1,8 @@
 #ifndef TEST_WEEK2_BUS_STOP_H
 #define TEST_WEEK2_BUS_STOP_H
 
-#include <map>
 #include <string>
 #include <vector>
-
-#include "../test.h"
 
 namespace test {
 namespace week2 {

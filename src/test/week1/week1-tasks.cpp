@@ -1,10 +1,40 @@
 #include "week1-tasks.h"
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+
+#include "../test.h"
 namespace test {
 namespace week1 {
 
 /**
- * Задание по программированию: Второе вхождение
+ * 6 Тренировочное задание по программированию: Чётные числа
+ * Дано два целых числа A и B (A <= B, A >= 1, B <= 30000). Выведите через
+ * пробел все чётные числа от A до B (включительно).
+ * */
+std::vector<int> odd_numbers(const int a, const int b)
+{
+    std::vector<int> res;
+    for (int i = a; i <= b; i++) {
+        if (i % 2 == 0) {
+            // i - чётное число
+            res.push_back(i);
+        }
+    }
+    return res;
+}
+
+void test_odd_numbers()
+{
+    assert(odd_numbers(1, 10) == std::vector<int>({2, 4, 6, 8, 10}));
+    assert(odd_numbers(2, 3) == std::vector<int>({2}));
+    assert(odd_numbers(9, 11) == std::vector<int>({10}));
+}
+
+/**
+ * 7 Задание по программированию: Второе вхождение
  *
  * Дана строка. Найдите в этой строке второе вхождение буквы f
  * и выведите индекс этого вхождения. Если буква f в данной строке
@@ -36,7 +66,7 @@ void test_second_input()
 }
 
 /**
- * Задание по программированию: Наибольший общий делитель
+ * 8 Задание по программированию: Наибольший общий делитель
  *
  * В stdin даны два натуральных числа.
  * Выведите в stdout их наибольший общий делитель.
@@ -70,7 +100,7 @@ void test_greatest_common_divisor()
 }
 
 /**
- * Двоичные числа
+ * 9 Двоичные числа
  *
  * На вход дано целое положительное число N.
  * Выведите его в двоичной системе счисления без ведущих нулей.
@@ -114,7 +144,7 @@ std::string transform_to_binary(int n)
             ss << *it;
         }
     }
-    //std::cout << ss.str() << std::endl;
+    // std::cout << ss.str() << std::endl;
     return ss.str();
 }
 
@@ -128,9 +158,10 @@ void test_transform_to_binary()
 void week1_tasks()
 {
     suite("Week 1");
-    mytest(second_input);
-    mytest(greatest_common_divisor);
-    mytest(transform_to_binary);
+    mytest(test_odd_numbers);
+    mytest(test_second_input);
+    mytest(test_greatest_common_divisor);
+    mytest(test_transform_to_binary);
 }
 } // namespace week1
 } // namespace test
