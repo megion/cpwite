@@ -184,7 +184,7 @@ void test_Reverse()
 std::vector<int> TemperatureAverage(const std::vector<int>& tv)
 {
     // calculate temperature average
-    int average;
+    int average = 0;
     for (auto t : tv) {
         average += t;
     }
@@ -203,12 +203,12 @@ void test_TemperatureAverage()
 {
     std::vector<int> result = TemperatureAverage({7, 6, 3, 0, 9});
 
-    /* assert(result.size() == 3); */
-    /* assert(result == std::vector<int>({0, 1, 4})); */
+    assert(result.size() == 3);
+    assert(result == std::vector<int>({0, 1, 4}));
 }
 
 /**
- * Люди стоят в очереди, но никогда не уходят из её начала,
+ * 9. Люди стоят в очереди, но никогда не уходят из её начала,
  * зато могут приходить в конец и уходить оттуда.
  * Более того, иногда некоторые люди могут прекращать и начинать беспокоиться
  * из-за того, что очередь не продвигается.
